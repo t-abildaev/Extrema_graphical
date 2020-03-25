@@ -18,7 +18,7 @@ public:
     double x0 = 0;
     double y0 = 0;
     int sc_num = 0;
-    double eps = 0/*1e-3*/;
+    double eps = 1e-6;
     int method_num = 0;
     int num_iter = 1000;
     double p = 0.5;

@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget * parent)
     optim_param.x0 = ui->x0Box->value();
     optim_param.y0 = ui->y0Box->value();
     optim_param.sc_num = ui->scBox->currentIndex();
-    //optim_param.eps = ui->EPSBox->value();
+    optim_param.eps = ui->EPSBox->value();
     optim_param.method_num = ui->methodWidget->currentIndex();
     optim_param.num_iter = ui->num_iter_PRCGBox->value();
     optim_param.p = ui->probBox->value();
@@ -124,7 +124,7 @@ void MainWindow::on_optimButton_clicked()
     optim_param.x0 = ui->x0Box->value();
     optim_param.y0 = ui->y0Box->value();
     optim_param.sc_num = ui->scBox->currentIndex();
-    //optim_param.eps = ui->EPSBox->value();
+    optim_param.eps = ui->EPSBox->value();
     optim_param.method_num = ui->methodWidget->currentIndex();
     optim_param.num_iter = ui->num_iter_PRCGBox->value();
     optim_param.p = ui->probBox->value();
