@@ -151,8 +151,8 @@ void PRCG::optimize()
 	else x_previous = a;
 
     Vector grad_current(function.gradient(x_current, EPS));
-	Vector direction = -grad_current;
-	Vector grad_next(dimension);
+    Vector direction = -grad_current;
+    Vector grad_previous(dimension);
 
 	while (!(stopCriterion.if_stop(x_current, x_previous)))
 	{
@@ -161,12 +161,14 @@ void PRCG::optimize()
 
         alpha = rect.how_far(x_current, direction);
 
-		x_previous = x_current;
+        x_previous = x_current;
         x_current = dir_search_I(x_current, direction, alpha);
-		grad_next = function.gradient(x_current, EPS);
-		alpha = (grad_next * (grad_next - grad_current)) / (grad_current * grad_current);
-		direction = -grad_current + alpha * direction;
-		grad_current = grad_next;
+
+        grad_previous = grad_current;
+        grad_current = function.gradient(x_current, EPS);
+
+        alpha = (grad_current * (grad_current - grad_previous)) / (grad_previous * grad_previous);
+        direction = -grad_current + alpha * direction;
 
         ++total_iter;
     }
